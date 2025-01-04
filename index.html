@@ -1,0 +1,84 @@
+mixin event-trigger(number)
+  input(id="event-#{number}"
+        type="checkbox")
+
++event-trigger(1)
++event-trigger(2)
+
+//- Tasks Value
+- var tasks = {1: "Create new project", 2: "Working call", 3: "Go to shop", 4: "Meet with doctor", 5: "Take the kids to school", 6: "Finish dribbble marathon", 7: "Walk the dog", 8: "Meet with mother", 9: "Finish this pen"}
+
+//- Body
+.body
+
+  //- App (Block)
+  .app
+  
+    //- App Overlay (Block)
+    label.app-overlay(for="event-1")
+    
+    //- App Menu (Block)
+    .app-menu
+      ul
+        li.app-menu__item.app-menu__item--active: a(href="#") All
+        li.app-menu__item: a(href="#") Category #1
+        li.app-menu__item: a(href="#") Category #2
+        li.app-menu__item: a(href="#") Category #3
+        
+      ul
+        li.app-menu__item: a(href="#") Settings
+        li.app-menu__item: a(href="#") Contact
+        li.app-menu__item: a(href="#") Privacy
+  
+    //- App Header (Block)
+    .app-header
+    
+      //- Icon (Element)
+      label.app-header__icon(for="event-1")
+        span
+        span
+      
+      // Title (Element)
+      .app-header__title All Task
+    
+  
+    //- App Body (Block)
+    .app-body
+    
+      //- App Tasks (Block)
+      ul.app-tasks
+        each value, num in tasks    
+          // Item (Elmenet)
+          li.app-tasks__item
+          
+            // Label (Element)
+            label.app-tasks__label
+              input(type="checkbox")
+              span= value
+              .app-tasks__mark
+
+    //- App Panel (Block)
+    .app-panel
+      
+      // Overlay (Element)
+      .app-panel__overlay
+
+      form
+        p Create a Task
+
+        input(type="text"
+              placeholder="Name")
+
+        input(type="text"
+              placeholder="Category")
+
+        input(type="text"
+              placeholder="Due Date")
+
+        input(type="submit"
+              value="Create")
+    //- App Footer (Block)
+    .app-footer
+    
+      //- Fab (Element)
+      label.app-footer__fab(for="event-2")
